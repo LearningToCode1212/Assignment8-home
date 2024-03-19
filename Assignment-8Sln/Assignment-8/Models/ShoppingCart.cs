@@ -15,5 +15,6 @@ namespace Assignment_8.Models
         public decimal CartTotal { get; set; }
         //public decimal CartItemPrice { get; set; }
         public string NameOfItem { get; set; }
+        public string ItemImageCart { get; set;}
     }
 }

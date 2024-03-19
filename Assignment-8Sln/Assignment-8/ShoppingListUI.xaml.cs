@@ -35,7 +35,7 @@ public partial class ShoppingListUI : ContentPage
     {
         //ShoppingItems items = _database.GetItemByID(1);
         //CurrentItem = items;
-        Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
+        //Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
     }
     private void Button1(object sender, EventArgs e)
     {
@@ -51,7 +51,7 @@ public partial class ShoppingListUI : ContentPage
 
             InsertToDatabase(name, total, quantityAmount);
             // Now you can use the values as needed
-            DisplayAlert("test", $"Name of item {name}, Quantity:{quantityAmount}, Price: {total}", "ok");
+            DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
     }
     public void InsertToDatabase(string name, decimal amount, int quantity)
@@ -82,21 +82,24 @@ public partial class ShoppingListUI : ContentPage
             {
                 NameOfItem = "John Doe",
                 CartTotal = new decimal(30),
-                ItemAmount = 10
+                ItemAmount = 10,
+                ItemImageCart = "Air-Max.jpg",
             },
 
             new ShoppingCart
             {
                 NameOfItem = "Paul Doe",
                 CartTotal = new decimal(60),
-                ItemAmount = 90
+                ItemAmount = 90,
+                ItemImageCart = "Air-Max.jpg",
             },
 
             new ShoppingCart
             {
                 NameOfItem = "David Doe",
                 CartTotal = new decimal(90),
-                ItemAmount = 18
+                ItemAmount = 18,
+                ItemImageCart = "Air-Force.jfif",
             },
         };
     }

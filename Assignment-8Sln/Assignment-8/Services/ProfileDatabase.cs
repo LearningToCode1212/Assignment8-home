@@ -50,18 +50,21 @@ namespace Assignment_8.Services
                         ItemName = "Item",
                         ItemQuantity = 1,
                         ItemPrice = 1,
+                        ItemImage = "Air Max.jpg",
                     },
                     new ShoppingItems()
                     {
                         ItemName = "Item 2",
                         ItemQuantity = 2,
                         ItemPrice = 2,
+                        ItemImage = "Air Force.jfif",
                     },
                     new ShoppingItems()
                     {
                         ItemName = "Item 3",
                         ItemQuantity = 3,
                         ItemPrice = 3,
+                        ItemImage = "CBa.jpg",
                     }
                 };
                 _dbConnection.InsertAll(shoppingItems);

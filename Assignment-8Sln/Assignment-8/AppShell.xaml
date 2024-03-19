@@ -8,9 +8,15 @@
     Title="Assignment_8">
 
     <TabBar>
-        <ShellContent Title="Shooping List" ContentTemplate="{DataTemplate local:ShoppingListUI}" />
-        <ShellContent Title="Cart" ContentTemplate="{DataTemplate local:ShoppingCartUI}" />
-        <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <Tab Title="Shopping List" Icon="price-list.png">
+            <ShellContent Title="Shooping List" ContentTemplate="{DataTemplate local:ShoppingListUI}" />
+        </Tab>
+        <Tab Title="Cart" Icon="shopping-cart.png">
+            <ShellContent Title="Cart" ContentTemplate="{DataTemplate local:ShoppingCartUI}" />
+        </Tab>
+        <Tab Title="Profile" Icon="user.png">
+            <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        </Tab>
     </TabBar>
     
     <!--<ShellContent
