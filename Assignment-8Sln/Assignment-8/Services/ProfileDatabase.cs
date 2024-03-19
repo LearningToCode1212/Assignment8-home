@@ -126,9 +126,15 @@ namespace Assignment_8.Services
                 CartTotal = amount
             };
 
+            if (newItem.NameOfItem == "John Doe")
+            {
+                
+            }
             // Add the new item to your list
             _dbConnection.Insert(newItem);
         }
+        // Display Error Message
+
 
         // Remove Item From Cart
         public void RemoveFromCart(ShoppingCart itemToRemove)
