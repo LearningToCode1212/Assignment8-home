@@ -22,10 +22,54 @@ namespace Assignment_8.Services
         {
             _dbConnection = new SQLiteConnection(GetDatabasePath());
             _dbConnection.CreateTable<UserProfile>();
+            _dbConnection.CreateTable<ShoppingItems>();
+            SeedDatabase();
+        }
+        public void SeedDatabase()
+        {
+            if (_dbConnection.Table<UserProfile>().Count() == 0) 
+            {
+                UserProfile userProfile = new UserProfile()
+                {
+                    Name = "Ethan",
+                    Surname = "Joubert",
+                    EmailAddress = "ethanjoubert@gmail.com",
+                    Bio = "Testing if this works"
+                };
+                _dbConnection.Insert(userProfile);
+            }
+
+            // Shopping List Items
+            if (_dbConnection.Table<ShoppingItems>().Count() == 0) 
+            {
+                List<ShoppingItems> shoppingItems = new List<ShoppingItems>()
+                {
+                    new ShoppingItems()
+                    {
+                        ItemName = "Item",
+                        ItemQuantity = 1,
+                        ItemPrice = 1,
+                    },
+                    new ShoppingItems()
+                    {
+                        ItemName = "Item 2",
+                        ItemQuantity = 2,
+                        ItemPrice = 2,
+                    },
+                    new ShoppingItems()
+                    {
+                        ItemName = "Item 3",
+                        ItemQuantity = 3,
+                        ItemPrice = 3,
+                    }
+                };
+                _dbConnection.InsertAll(shoppingItems);
+            }
         }
 
 
-        //Methods
+        // Methods
+        // User Profile Methods
         public void UpdateUser(UserProfile profile)
         {
             _dbConnection.Update(profile); // Updating the database with new information passed through
@@ -39,6 +83,13 @@ namespace Assignment_8.Services
                 _dbConnection.GetChildren(user, true);
 
             return user;
+        }
+
+
+        // Shopping List Methods
+        public List<ShoppingItems> GetAllItems()
+        {
+            return _dbConnection.Table<ShoppingItems>().ToList();
         }
     }
 }

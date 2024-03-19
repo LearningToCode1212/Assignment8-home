@@ -33,7 +33,7 @@ public partial class ProfilePage : ContentPage
     {
         UserProfile profile = _database.GetUserByID(1); // Assigning the user to a userid that was saved
         CurrentUser = profile; // Assigning the user to the CurrentUser (will display on screen)
-    }
+    }                
 
     private void SaveProfile(object sender, EventArgs e)
     {
@@ -47,7 +47,7 @@ public partial class ProfilePage : ContentPage
 
     private void LoadProfile(object sender, EventArgs e) // Loading data on button clcik
     {
-        //DisplayAlert("test", "is working", "ok");
+        DisplayAlert("test", "is working", "ok");
         LoadData();
     }
 }

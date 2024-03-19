@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:p="clr-namespace:Assignment_8.Models"
+             xmlns:z="clr-namespace:Assignment_8"
+             x:Class="Assignment_8.ShoppingListUI"
+             Title="ShoppingListUI">
+    
+    <ListView ItemsSource="{Binding Items}" x:Name="ItemsList"  HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="p:ShoppingItems">
+                <ViewCell>
+                    <Grid Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ItemImage}" Grid.RowSpan="2" Grid.Column="0" Grid.Row="0"/>
+                        <Label Text="{Binding ItemName}" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20"/>
+                        <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
+                            <Label Text="Quantity:" Margin="5" FontSize="17"/>
+                            <Label Text="{Binding ItemQuantity}" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="17"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
+                            <Label Text="Price:" Margin="5" FontSize="18"/>
+                            <Label Text="{Binding ItemPrice}" Grid.Column="1" Grid.Row="2" Margin="5" FontSize="18"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
