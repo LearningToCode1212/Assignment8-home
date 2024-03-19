@@ -38,5 +38,12 @@ public partial class ShoppingCartUI : ContentPage
     private void Button_Clicked(object sender, EventArgs e)
     {
         Button button = (Button)sender;
+        var selectedItem = button.CommandParameter as ShoppingCart;
+
+        if (selectedItem != null)
+        {
+            CartItems.Remove(selectedItem);
+            _database.RemoveFromCart(selectedItem);
+        }
     }
 }

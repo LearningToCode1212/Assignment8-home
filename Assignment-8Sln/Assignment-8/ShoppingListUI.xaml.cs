@@ -46,12 +46,12 @@ public partial class ShoppingListUI : ContentPage
         {
             // Access item properties here
             string name = item.NameOfItem;
-            int quantityAmount = item.ItemAmount;
+            int quantityAmount = item.ItemAmount - 1;
             decimal total = item.CartTotal;
 
             InsertToDatabase(name, total, quantityAmount);
             // Now you can use the values as needed
-            DisplayAlert("test", $"Name of item {name}, Price: {total}", "ok");
+            DisplayAlert("test", $"Name of item {name}, Quantity:{quantityAmount}, Price: {total}", "ok");
         }
     }
     public void InsertToDatabase(string name, decimal amount, int quantity)
@@ -82,14 +82,14 @@ public partial class ShoppingListUI : ContentPage
             {
                 NameOfItem = "John Doe",
                 CartTotal = new decimal(30),
-                ItemAmount = 1
+                ItemAmount = 10
             },
 
             new ShoppingCart
             {
                 NameOfItem = "Paul Doe",
                 CartTotal = new decimal(60),
-                ItemAmount = 9
+                ItemAmount = 90
             },
 
             new ShoppingCart

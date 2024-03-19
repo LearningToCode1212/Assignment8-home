@@ -117,6 +117,7 @@ namespace Assignment_8.Services
         // Insert Item from Shopping List to Cart
         public void InsertToCart(string name, decimal amount, int quantity)
         {
+            //int updated = quantity--;
             // Create a new instance of ShoppingCart
             var newItem = new ShoppingCart
             {
@@ -127,6 +128,12 @@ namespace Assignment_8.Services
 
             // Add the new item to your list
             _dbConnection.Insert(newItem);
+        }
+
+        // Remove Item From Cart
+        public void RemoveFromCart(ShoppingCart itemToRemove)
+        {
+            _dbConnection.Delete(itemToRemove);
         }
     }
 }
