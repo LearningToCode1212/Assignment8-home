@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment_8.ProfilePage"
+             Title="ProfilePage">
+    <StackLayout>
+        <Label 
+            Text="Welcome to Profile Page!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" Margin="0, 20, 0, 25" FontAttributes="Bold"/>
+        <Label x:Name="savedMessage" TextColor="Green" Margin="0, 10, 0, 10" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+        <!-- Profile Page UI -->
+        <Label Text="Name: " Margin="10, 0, 0 ,0" FontAttributes="Bold" FontSize="17"></Label>
+        <Entry Margin="7, 0, 0 ,0" x:Name="nameEntry" Text="{Binding CurrentUser.Name}"></Entry>
+        <Label Text="Surname: " Margin="10, 0, 0 ,0" FontAttributes="Bold" FontSize="17"></Label>
+        <Entry Margin="7, 0, 0 ,0" x:Name="surnameEntry" Text="{Binding CurrentUser.Surname}"></Entry>
+        <Label Text="Email: " Margin="10, 0, 0 ,0" FontAttributes="Bold" FontSize="17"></Label>
+        <Entry Margin="7, 0, 0 ,0" x:Name="emailEntry" Text="{Binding CurrentUser.EmailAddress}"></Entry>
+        <Label Text="Bio: " Margin="10, 0, 0 ,0" FontAttributes="Bold" FontSize="17"></Label>
+        <Entry Margin="7, 0, 0 ,0" x:Name="bioEntry" Text="{Binding CurrentUser.Bio}"></Entry>
+
+        <StackLayout Orientation="Horizontal" Spacing="25" HorizontalOptions="Center" Margin="20">
+            <Button Text="Save" Clicked="SaveProfile" WidthRequest="120" HeightRequest="50" BackgroundColor="Black"></Button>
+            <Button Text="Load" Clicked="LoadProfile" WidthRequest="120" HeightRequest="50" Background="Black"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
