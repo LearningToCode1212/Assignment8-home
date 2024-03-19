@@ -23,6 +23,7 @@ public partial class ShoppingListUI : ContentPage
 		InitializeComponent();
         _database = new ProfileDatabase();
         BindingContext = this;
+        ItemsList.ItemsSource = GetAllItems();
     }
     protected override void OnAppearing()
     {
@@ -35,5 +36,68 @@ public partial class ShoppingListUI : ContentPage
         //ShoppingItems items = _database.GetItemByID(1);
         //CurrentItem = items;
         Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
+    }
+    private void Button1(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        var selectedItem = button.CommandParameter;
+
+        if (selectedItem is ShoppingCart item)
+        {
+            // Access item properties here
+            string name = item.NameOfItem;
+            int quantityAmount = item.ItemAmount;
+            decimal total = item.CartTotal;
+
+            InsertToDatabase(name, total, quantityAmount);
+            // Now you can use the values as needed
+            DisplayAlert("test", $"Name of item {name}, Price: {total}", "ok");
+        }
+    }
+    public void InsertToDatabase(string name, decimal amount, int quantity)
+    {
+        _database.InsertToCart(name, amount, quantity);
+    }
+    private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem != null)
+        {
+            // Cast the selected item to your data model type
+            var selectedItem = e.SelectedItem as ShoppingCart; // Replace YourDataType with your actual data type
+
+            // Extract data from the selected item
+            string itemName = selectedItem.NameOfItem;
+            decimal itemPrice = selectedItem.CartTotal;
+            int itemQuantity = selectedItem.ItemAmount;
+            InsertToDatabase(itemName, itemPrice, itemQuantity);
+            // Extract other relevant data as needed
+            //_database.InsertToCart(itemName, itemPrice, itemQuantity);
+        }
+    }
+    private List<ShoppingCart> GetAllItems()
+    {
+        return new List<ShoppingCart>
+        {
+            new ShoppingCart
+            {
+                NameOfItem = "John Doe",
+                CartTotal = new decimal(30),
+                ItemAmount = 1
+            },
+
+            new ShoppingCart
+            {
+                NameOfItem = "Paul Doe",
+                CartTotal = new decimal(60),
+                ItemAmount = 9
+            },
+
+            new ShoppingCart
+            {
+                NameOfItem = "David Doe",
+                CartTotal = new decimal(90),
+                ItemAmount = 18
+            },
+        };
     }
 }

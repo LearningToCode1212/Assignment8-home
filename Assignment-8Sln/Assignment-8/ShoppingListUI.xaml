@@ -33,6 +33,9 @@
                             <Label Text="Price:" Margin="5" FontSize="18"/>
                             <Label Text="{Binding ItemPrice}" Grid.Column="1" Grid.Row="2" Margin="5" FontSize="18"/>
                         </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Column="1" Grid.Row="3">
+                            <Button Text="Add To Cart" Grid.Row="1" Grid.Column="3" Margin="5" Clicked="Button1" CommandParameter="{Binding .}"/>
+                        </HorizontalStackLayout>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

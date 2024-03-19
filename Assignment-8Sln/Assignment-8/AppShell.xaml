@@ -7,9 +7,15 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Assignment_8">
 
-    <ShellContent
+    <TabBar>
+        <ShellContent Title="Shooping List" ContentTemplate="{DataTemplate local:ShoppingListUI}" />
+        <ShellContent Title="Cart" ContentTemplate="{DataTemplate local:ShoppingCartUI}" />
+        <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </TabBar>
+    
+    <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:ShoppingCartUI}"
-        Route="MainPage" />
+        Route="MainPage" />-->
 
 </Shell>

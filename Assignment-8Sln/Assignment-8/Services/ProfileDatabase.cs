@@ -72,12 +72,12 @@ namespace Assignment_8.Services
             {
                 List<ShoppingCart> carts = new List<ShoppingCart>()
                 {
-                    new ShoppingCart()
+                    /*new ShoppingCart()
                     {
                         NameOfItem = "Test",
                         ItemAmount = 3,
                         CartTotal = 40
-                    }
+                    }*/
                 };
                 _dbConnection.InsertAll(carts);
             }
@@ -112,6 +112,21 @@ namespace Assignment_8.Services
         public List<ShoppingCart> GetAllCartItems()
         {
             return _dbConnection.Table<ShoppingCart>().ToList();
+        }
+
+        // Insert Item from Shopping List to Cart
+        public void InsertToCart(string name, decimal amount, int quantity)
+        {
+            // Create a new instance of ShoppingCart
+            var newItem = new ShoppingCart
+            {
+                NameOfItem = name,
+                ItemAmount = quantity,
+                CartTotal = amount
+            };
+
+            // Add the new item to your list
+            _dbConnection.Insert(newItem);
         }
     }
 }

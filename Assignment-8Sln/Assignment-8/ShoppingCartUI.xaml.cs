@@ -34,4 +34,9 @@ public partial class ShoppingCartUI : ContentPage
     {
         CartItems = new ObservableCollection<ShoppingCart>(_database.GetAllCartItems());
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+    }
 }
