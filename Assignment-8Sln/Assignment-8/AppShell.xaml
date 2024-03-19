@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:ShoppingListUI}"
+        ContentTemplate="{DataTemplate local:ShoppingCartUI}"
         Route="MainPage" />
 
 </Shell>

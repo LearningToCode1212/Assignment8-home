@@ -23,6 +23,7 @@ namespace Assignment_8.Services
             _dbConnection = new SQLiteConnection(GetDatabasePath());
             _dbConnection.CreateTable<UserProfile>();
             _dbConnection.CreateTable<ShoppingItems>();
+            _dbConnection.CreateTable<ShoppingCart>();
             SeedDatabase();
         }
         public void SeedDatabase()
@@ -65,6 +66,21 @@ namespace Assignment_8.Services
                 };
                 _dbConnection.InsertAll(shoppingItems);
             }
+
+            // Shopping Cart Items
+            if (_dbConnection.Table<ShoppingCart>().Count() == 0)
+            {
+                List<ShoppingCart> carts = new List<ShoppingCart>()
+                {
+                    new ShoppingCart()
+                    {
+                        NameOfItem = "Test",
+                        ItemAmount = 3,
+                        CartTotal = 40
+                    }
+                };
+                _dbConnection.InsertAll(carts);
+            }
         }
 
 
@@ -90,6 +106,12 @@ namespace Assignment_8.Services
         public List<ShoppingItems> GetAllItems()
         {
             return _dbConnection.Table<ShoppingItems>().ToList();
+        }
+
+        // Shopping Cart Methods
+        public List<ShoppingCart> GetAllCartItems()
+        {
+            return _dbConnection.Table<ShoppingCart>().ToList();
         }
     }
 }

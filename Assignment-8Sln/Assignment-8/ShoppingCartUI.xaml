@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:p="clr-namespace:Assignment_8.Models"
+             xmlns:z="clr-namespace:Assignment_8"
+             x:Class="Assignment_8.ShoppingCartUI"
+             Title="ShoppingCartUI">
+    
+    <ListView ItemsSource="{Binding CartItems}" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="p:ShoppingCart">
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2" Grid.Column="0" Grid.Row="0" />
+                        <Label Text="{Binding NameOfItem}" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="25"/>
+                        <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
+                            <Label Text="Quantity:" FontSize="20" Margin="5"/>
+                            <Label Text="{Binding ItemAmount}" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="20"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
+                            <Label Text="Total:" FontSize="20" Margin="5" />
+                            <Label Text="{Binding CartTotal}" Grid.Column="1" Grid.Row="2" Margin="5" FontSize="20"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
