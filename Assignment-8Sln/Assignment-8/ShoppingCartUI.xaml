@@ -22,15 +22,15 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image Grid.RowSpan="2" Grid.Column="0" Grid.Row="0" />
-                        <Label Text="{Binding NameOfItem}" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="25"/>
-                        <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
-                            <Label Text="Quantity:" FontSize="20" Margin="5"/>
-                            <Label Text="{Binding ItemAmount}" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="20"/>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
-                            <Label Text="Total:" FontSize="20" Margin="5" />
-                            <Label Text="{Binding CartTotal}" Grid.Column="1" Grid.Row="2" Margin="5" FontSize="20"/>
-                        </HorizontalStackLayout>
+                            <Label Text="{Binding NameOfItem}" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="25"/>
+                            <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
+                                <Label Text="Quantity:" FontSize="20" Margin="5"/>
+                                <Label Text="{Binding ItemAmount}" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="20"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
+                                <Label Text="Total:" FontSize="20" Margin="5" />
+                                <Label Text="{Binding CartTotal}" Grid.Column="1" Grid.Row="2" Margin="5" FontSize="20"/>
+                            </HorizontalStackLayout>
                         <HorizontalStackLayout Grid.Column="1" Grid.Row="3">
                             <Button Text="Remove Item" Grid.Column="1" Grid.Row="3" Clicked="Button_Clicked" CommandParameter="{Binding .}"/>
                         </HorizontalStackLayout>
