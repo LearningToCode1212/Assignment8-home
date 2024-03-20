@@ -18,6 +18,24 @@ public partial class ShoppingListUI : ContentPage
             OnPropertyChanged();
         }
     }
+
+    private int _itemamount;
+
+    public int ItemAmounts
+    {
+        get { return _itemamount; }
+        set { _itemamount = value; }
+    }
+
+    private decimal _carttotal;
+
+    public decimal CartTotals
+    {
+        get { return _carttotal; }
+        set { _carttotal = value; }
+    }
+
+
     public ShoppingListUI()
 	{
 		InitializeComponent();
@@ -38,6 +56,7 @@ public partial class ShoppingListUI : ContentPage
         Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
     }
 
+
     private List<ShoppingCart> cartItems = new List<ShoppingCart>();
     private void Button1(object sender, EventArgs e)
     {
@@ -46,7 +65,7 @@ public partial class ShoppingListUI : ContentPage
 
         if (selectedItem != null)
         {
-            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.CartID == selectedItem.ItemID);
+            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.ItemID == selectedItem.ItemID);
             if (existingItem != null)
             {
                 // updating the price and the qauntity in the cart

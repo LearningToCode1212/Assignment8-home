@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,9 @@ namespace Assignment_8.Models
         public decimal ItemPrice { get; set; }
         public string ItemDescription { get; set; }
         public string ItemImage { get; set; }
+
+        // Foreign Keys
+        [ForeignKey(typeof(ShoppingCart))]
+        public int CartID { get; set; } // Dont forget the foreign keys of the names too
     }
 }
