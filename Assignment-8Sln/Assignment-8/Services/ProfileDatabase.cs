@@ -118,7 +118,7 @@ namespace Assignment_8.Services
         }
 
         // Insert Item from Shopping List to Cart
-        public void InsertToCart(string name, decimal amount, int quantity)
+        public void InsertToCart(string name, decimal amount, int quantity, string images)
         {
             //int updated = quantity--;
             // Create a new instance of ShoppingCart
@@ -126,7 +126,8 @@ namespace Assignment_8.Services
             {
                 NameOfItem = name,
                 ItemAmount = quantity,
-                CartTotal = amount
+                CartTotal = amount,
+                ItemImageCart = images
             };
 
             if (newItem.NameOfItem == "John Doe")

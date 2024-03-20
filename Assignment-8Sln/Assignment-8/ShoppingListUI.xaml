@@ -23,7 +23,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Frame  Grid.RowSpan="4" Grid.Column="0" Grid.Row="0" BorderColor="Black" Margin="5" HeightRequest="300">
-                            <Image Source="{Binding ItemImageCart}" Grid.RowSpan="4" Grid.Column="0" Grid.Row="0"/>
+                            <Image Source="{Binding ItemImageCart}" HeightRequest="200" WidthRequest="200" Grid.RowSpan="4" Grid.Column="0" Grid.Row="0"/>
                         </Frame>
                         <Label Text="{Binding NameOfItem}" Grid.Column="1" Grid.Row="0" Margin="20, 50, 0, 0" FontSize="40" FontAttributes="Bold"/>
                         <HorizontalStackLayout Grid.Column="1" Grid.Row="1">

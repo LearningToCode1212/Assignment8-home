@@ -48,15 +48,16 @@ public partial class ShoppingListUI : ContentPage
             string name = item.NameOfItem;
             int quantityAmount = item.ItemAmount - 1;
             decimal total = item.CartTotal;
+            string img = item.ItemImageCart;
 
-            InsertToDatabase(name, total, quantityAmount);
+            InsertToDatabase(name, total, quantityAmount, img);
             // Now you can use the values as needed
             DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
     }
-    public void InsertToDatabase(string name, decimal amount, int quantity)
+    public void InsertToDatabase(string name, decimal amount, int quantity, string images)
     {
-        _database.InsertToCart(name, amount, quantity);
+        _database.InsertToCart(name, amount, quantity, images);
     }
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -69,7 +70,8 @@ public partial class ShoppingListUI : ContentPage
             string itemName = selectedItem.NameOfItem;
             decimal itemPrice = selectedItem.CartTotal;
             int itemQuantity = selectedItem.ItemAmount;
-            InsertToDatabase(itemName, itemPrice, itemQuantity);
+            string img = selectedItem.ItemImageCart;
+            InsertToDatabase(itemName, itemPrice, itemQuantity, img);
             // Extract other relevant data as needed
             //_database.InsertToCart(itemName, itemPrice, itemQuantity);
         }
@@ -83,7 +85,7 @@ public partial class ShoppingListUI : ContentPage
                 NameOfItem = "John Doe",
                 CartTotal = new decimal(30),
                 ItemAmount = 10,
-                ItemImageCart = "Air-Max.jpg",
+                ItemImageCart = "shoe.png",
             },
 
             new ShoppingCart
@@ -91,7 +93,7 @@ public partial class ShoppingListUI : ContentPage
                 NameOfItem = "Paul Doe",
                 CartTotal = new decimal(60),
                 ItemAmount = 90,
-                ItemImageCart = "Air-Max.jpg",
+                ItemImageCart = "Resoures/Images/new_balanace.png",
             },
 
             new ShoppingCart
@@ -99,7 +101,7 @@ public partial class ShoppingListUI : ContentPage
                 NameOfItem = "David Doe",
                 CartTotal = new decimal(90),
                 ItemAmount = 18,
-                ItemImageCart = "Air-Force.jfif",
+                ItemImageCart = "Resources/Images/air_maxs.png",
             },
         };
     }

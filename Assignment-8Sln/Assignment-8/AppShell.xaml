@@ -8,10 +8,10 @@
     Title="Assignment_8">
 
     <TabBar>
-        <Tab Title="Shopping List" Icon="price-list.png">
+        <Tab Title="Shopping List" Icon="price_list.png">
             <ShellContent Title="Shooping List" ContentTemplate="{DataTemplate local:ShoppingListUI}" />
         </Tab>
-        <Tab Title="Cart" Icon="shopping-cart.png">
+        <Tab Title="Cart" Icon="Resources/Images/shopping_cart.png">
             <ShellContent Title="Cart" ContentTemplate="{DataTemplate local:ShoppingCartUI}" />
         </Tab>
         <Tab Title="Profile" Icon="user.png">
