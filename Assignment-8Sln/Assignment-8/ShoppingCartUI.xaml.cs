@@ -32,6 +32,7 @@ public partial class ShoppingCartUI : ContentPage
     }
     public void LoadData()
     {
+        // Returns a list from the database with all data and displays in one the screen
         CartItems = new ObservableCollection<ShoppingCart>(_database.GetAllCartItems());
     }
 

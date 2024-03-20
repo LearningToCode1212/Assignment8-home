@@ -39,19 +39,18 @@ public partial class ShoppingListUI : ContentPage
     }
     private void Button1(object sender, EventArgs e)
     {
+        // takes the current item that is clicked and adds it into the database
         Button button = (Button)sender;
         var selectedItem = button.CommandParameter;
 
         if (selectedItem is ShoppingCart item)
         {
-            // Access item properties here
             string name = item.NameOfItem;
             int quantityAmount = item.ItemAmount - 1;
             decimal total = item.CartTotal;
             string img = item.ItemImageCart;
 
             InsertToDatabase(name, total, quantityAmount, img);
-            // Now you can use the values as needed
             DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
     }
@@ -61,21 +60,21 @@ public partial class ShoppingListUI : ContentPage
     }
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
+        // Does the exact some thing the button does
         if (e.SelectedItem != null)
         {
-            // Cast the selected item to your data model type
-            var selectedItem = e.SelectedItem as ShoppingCart; // Replace YourDataType with your actual data type
+            var selectedItem = e.SelectedItem as ShoppingCart;
 
-            // Extract data from the selected item
             string itemName = selectedItem.NameOfItem;
             decimal itemPrice = selectedItem.CartTotal;
             int itemQuantity = selectedItem.ItemAmount;
             string img = selectedItem.ItemImageCart;
+
             InsertToDatabase(itemName, itemPrice, itemQuantity, img);
-            // Extract other relevant data as needed
-            //_database.InsertToCart(itemName, itemPrice, itemQuantity);
         }
     }
+
+    // List data that will be displayed in the list UI
     private List<ShoppingCart> GetAllItems()
     {
         return new List<ShoppingCart>
@@ -83,7 +82,7 @@ public partial class ShoppingListUI : ContentPage
             new ShoppingCart
             {
                 NameOfItem = "Nike Air Max",
-                CartTotal = new decimal(30),
+                CartTotal = new decimal(3000),
                 ItemAmount = 10,
                 ItemImageCart = "shoe.png",
             },
@@ -91,7 +90,7 @@ public partial class ShoppingListUI : ContentPage
             new ShoppingCart
             {
                 NameOfItem = "New Balanace 550",
-                CartTotal = new decimal(60),
+                CartTotal = new decimal(6000),
                 ItemAmount = 90,
                 ItemImageCart = "Resoures/Images/new_balanace.png",
             },
@@ -99,7 +98,7 @@ public partial class ShoppingListUI : ContentPage
             new ShoppingCart
             {
                 NameOfItem = "Nike Air Max 90",
-                CartTotal = new decimal(90),
+                CartTotal = new decimal(9000),
                 ItemAmount = 18,
                 ItemImageCart = "Resources/Images/air_maxs.png",
             },

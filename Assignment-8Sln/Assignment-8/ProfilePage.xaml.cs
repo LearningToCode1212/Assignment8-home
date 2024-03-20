@@ -47,7 +47,7 @@ public partial class ProfilePage : ContentPage
 
     private void LoadProfile(object sender, EventArgs e) // Loading data on button clcik
     {
-        DisplayAlert("test", "is working", "ok");
+        //DisplayAlert("test", "is working", "ok");
         LoadData();
     }
 }

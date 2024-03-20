@@ -91,10 +91,10 @@ namespace Assignment_8.Services
         // User Profile Methods
         public void UpdateUser(UserProfile profile)
         {
-            _dbConnection.Update(profile); // Updating the database with new information passed through
+            _dbConnection.Update(profile);
         }
 
-        public UserProfile GetUserByID(int id) // Getting the ID of the user
+        public UserProfile GetUserByID(int id)
         {
             UserProfile user = _dbConnection.Table<UserProfile>().Where(x => x.UserId == id).FirstOrDefault();
 
@@ -111,17 +111,17 @@ namespace Assignment_8.Services
             return _dbConnection.Table<ShoppingItems>().ToList();
         }
 
+
         // Shopping Cart Methods
         public List<ShoppingCart> GetAllCartItems()
         {
             return _dbConnection.Table<ShoppingCart>().ToList();
         }
 
+
         // Insert Item from Shopping List to Cart
         public void InsertToCart(string name, decimal amount, int quantity, string images)
         {
-            //int updated = quantity--;
-            // Create a new instance of ShoppingCart
             var newItem = new ShoppingCart
             {
                 NameOfItem = name,
@@ -134,10 +134,9 @@ namespace Assignment_8.Services
             {
                 
             }
-            // Add the new item to your list
             _dbConnection.Insert(newItem);
         }
-        // Display Error Message
+        // Display Error Message here..
 
 
         // Remove Item From Cart
