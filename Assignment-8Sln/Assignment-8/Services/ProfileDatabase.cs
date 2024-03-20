@@ -62,7 +62,7 @@ namespace Assignment_8.Services
                     new ShoppingItems()
                     {
                         ItemName = "Item 3",
-                        ItemQuantity = 3,
+                        ItemQuantity = 13,
                         ItemPrice = 3,
                         ItemImage = "Resources/Images/shoe.png",
                     }
@@ -73,16 +73,16 @@ namespace Assignment_8.Services
             // Shopping Cart Items
             if (_dbConnection.Table<ShoppingCart>().Count() == 0)
             {
-                List<ShoppingCart> carts = new List<ShoppingCart>()
+                /*List<ShoppingCart> carts = new List<ShoppingCart>()
                 {
                     /*new ShoppingCart()
                     {
                         NameOfItem = "Test",
                         ItemAmount = 3,
                         CartTotal = 40
-                    }*/
-                };
-                _dbConnection.InsertAll(carts);
+                    }
+                };*/
+                //_dbConnection.InsertAll(carts);
             }
         }
 
@@ -120,29 +120,11 @@ namespace Assignment_8.Services
 
 
         // Insert Item from Shopping List to Cart
-        private List<ShoppingCart> cartItems = new List<ShoppingCart>();
-        public void InsertToCart(string name, decimal amount, int quantity, string images)
+        //private List<ShoppingCart> cartItems = new List<ShoppingCart>();
+        public void InsertToDatabase(ShoppingCart item)
         {
-            var newItem = new ShoppingCart
-            {
-                NameOfItem = name,
-                ItemAmount = quantity,
-                CartTotal = amount,
-                ItemImageCart = images
-            };
-            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.NameOfItem == newItem.NameOfItem);
-            if (existingItem != null)
-            {
-                // Item already exists in the cart, update its quantity
-                existingItem.ItemAmount--;
-            }
-            else
-            {
-                // Item does not exist in the cart, add it
-                _dbConnection.Insert(newItem);
-            }
+            _dbConnection.Insert(item);
         }
-        // Display Error Message here..
 
 
         // Remove Item From Cart

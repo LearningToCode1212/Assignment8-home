@@ -37,29 +37,38 @@ public partial class ShoppingListUI : ContentPage
         //CurrentItem = items;
         Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
     }
+
+    private List<ShoppingCart> cartItems = new List<ShoppingCart>();
     private void Button1(object sender, EventArgs e)
     {
-        // takes the current item that is clicked and adds it into the database
         Button button = (Button)sender;
-        var selectedItem = button.CommandParameter;
-        //ShoppingCart
-        if (selectedItem is ShoppingItems item)
-        {
-            string name = item.ItemName;
-            int quantityAmount = item.ItemQuantity - 1;
-            decimal total = item.ItemPrice;
-            string img = item.ItemImage;
-            
+        var selectedItem = button.CommandParameter as ShoppingItems;
 
-            InsertToDatabase(name, total, quantityAmount, img);
+        if (selectedItem != null)
+        {
+            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.ItemID == selectedItem.ItemID);
+            if (existingItem != null)
+            {
+                // updating the price and the qauntity in the cart
+                existingItem.ItemAmount += selectedItem.ItemQuantity - 1;
+                existingItem.CartTotal += selectedItem.ItemPrice;
+            }
+            else
+            {
+                ShoppingCart shoppingCart = new ShoppingCart()
+                {
+                    NameOfItem = selectedItem.ItemName,
+                    ItemAmount = selectedItem.ItemQuantity - 1,
+                    CartTotal = selectedItem.ItemPrice,
+                    ItemImageCart = selectedItem.ItemImage,
+                    ItemID = selectedItem.ItemID
+                };
+
+                cartItems.Add(shoppingCart);
+            }
+            _database.InsertToDatabase(existingItem);
             DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
-    }
-
-
-    public void InsertToDatabase(string name, decimal amount, int quantity, string images)
-    {
-        _database.InsertToCart(name, amount, quantity, images);
     }
 
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -74,7 +83,7 @@ public partial class ShoppingListUI : ContentPage
             int itemQuantity = selectedItem.ItemAmount;
             string img = selectedItem.ItemImageCart;
 
-            InsertToDatabase(itemName, itemPrice, itemQuantity, img);
+            //InsertToCart();
         }
     }
 
