@@ -46,27 +46,27 @@ public partial class ShoppingListUI : ContentPage
 
         if (selectedItem != null)
         {
-            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.ItemID == selectedItem.ItemID);
+            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.CartID == selectedItem.ItemID);
             if (existingItem != null)
             {
                 // updating the price and the qauntity in the cart
-                existingItem.ItemAmount += selectedItem.ItemQuantity - 1;
+                existingItem.ItemAmount++;
                 existingItem.CartTotal += selectedItem.ItemPrice;
             }
             else
             {
+                // if item doesnt exist
                 ShoppingCart shoppingCart = new ShoppingCart()
                 {
                     NameOfItem = selectedItem.ItemName,
-                    ItemAmount = selectedItem.ItemQuantity - 1,
+                    ItemAmount = 1,
                     CartTotal = selectedItem.ItemPrice,
                     ItemImageCart = selectedItem.ItemImage,
                     ItemID = selectedItem.ItemID
                 };
-
                 cartItems.Add(shoppingCart);
+                _database.InsertToDatabase(shoppingCart);
             }
-            _database.InsertToDatabase(existingItem);
             DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
     }
