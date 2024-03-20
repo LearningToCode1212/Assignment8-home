@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace Assignment_8.Models
         public string Surname { get; set; }
         public string EmailAddress { get; set; }
         public string Bio { get; set; }
+
+        //Relationships
+        [OneToOne]
+        public ShoppingCart shoppingCart { get; set; }
     }
 }

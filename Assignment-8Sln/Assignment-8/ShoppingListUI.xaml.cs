@@ -82,7 +82,7 @@ public partial class ShoppingListUI : ContentPage
         {
             new ShoppingCart
             {
-                NameOfItem = "John Doe",
+                NameOfItem = "Nike Air Max",
                 CartTotal = new decimal(30),
                 ItemAmount = 10,
                 ItemImageCart = "shoe.png",
@@ -90,7 +90,7 @@ public partial class ShoppingListUI : ContentPage
 
             new ShoppingCart
             {
-                NameOfItem = "Paul Doe",
+                NameOfItem = "New Balanace 550",
                 CartTotal = new decimal(60),
                 ItemAmount = 90,
                 ItemImageCart = "Resoures/Images/new_balanace.png",
@@ -98,7 +98,7 @@ public partial class ShoppingListUI : ContentPage
 
             new ShoppingCart
             {
-                NameOfItem = "David Doe",
+                NameOfItem = "Nike Air Max 90",
                 CartTotal = new decimal(90),
                 ItemAmount = 18,
                 ItemImageCart = "Resources/Images/air_maxs.png",
