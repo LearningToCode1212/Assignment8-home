@@ -50,21 +50,21 @@ namespace Assignment_8.Services
                         ItemName = "Item",
                         ItemQuantity = 1,
                         ItemPrice = 1,
-                        ItemImage = "Air Max.jpg",
+                        ItemImage = "Resources/Images/shoe.png",
                     },
                     new ShoppingItems()
                     {
                         ItemName = "Item 2",
                         ItemQuantity = 2,
                         ItemPrice = 2,
-                        ItemImage = "Air Force.jfif",
+                        ItemImage = "Resources/Images/shoe.png",
                     },
                     new ShoppingItems()
                     {
                         ItemName = "Item 3",
                         ItemQuantity = 3,
                         ItemPrice = 3,
-                        ItemImage = "CBa.jpg",
+                        ItemImage = "Resources/Images/shoe.png",
                     }
                 };
                 _dbConnection.InsertAll(shoppingItems);
@@ -120,6 +120,7 @@ namespace Assignment_8.Services
 
 
         // Insert Item from Shopping List to Cart
+        private List<ShoppingCart> cartItems = new List<ShoppingCart>();
         public void InsertToCart(string name, decimal amount, int quantity, string images)
         {
             var newItem = new ShoppingCart
@@ -129,12 +130,17 @@ namespace Assignment_8.Services
                 CartTotal = amount,
                 ItemImageCart = images
             };
-
-            if (newItem.NameOfItem == "John Doe")
+            ShoppingCart existingItem = cartItems.FirstOrDefault(i => i.NameOfItem == newItem.NameOfItem);
+            if (existingItem != null)
             {
-                
+                // Item already exists in the cart, update its quantity
+                existingItem.ItemAmount--;
             }
-            _dbConnection.Insert(newItem);
+            else
+            {
+                // Item does not exist in the cart, add it
+                _dbConnection.Insert(newItem);
+            }
         }
         // Display Error Message here..
 

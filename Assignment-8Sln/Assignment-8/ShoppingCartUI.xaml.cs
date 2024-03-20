@@ -36,6 +36,7 @@ public partial class ShoppingCartUI : ContentPage
         CartItems = new ObservableCollection<ShoppingCart>(_database.GetAllCartItems());
     }
 
+    // Remove Button
     private void Button_Clicked(object sender, EventArgs e)
     {
         Button button = (Button)sender;

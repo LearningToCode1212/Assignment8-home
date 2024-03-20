@@ -23,7 +23,7 @@ public partial class ShoppingListUI : ContentPage
 		InitializeComponent();
         _database = new ProfileDatabase();
         BindingContext = this;
-        ItemsList.ItemsSource = GetAllItems();
+        //ItemsList.ItemsSource = GetAllItems();
     }
     protected override void OnAppearing()
     {
@@ -35,29 +35,33 @@ public partial class ShoppingListUI : ContentPage
     {
         //ShoppingItems items = _database.GetItemByID(1);
         //CurrentItem = items;
-        //Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
+        Items = new ObservableCollection<ShoppingItems>(_database.GetAllItems());
     }
     private void Button1(object sender, EventArgs e)
     {
         // takes the current item that is clicked and adds it into the database
         Button button = (Button)sender;
         var selectedItem = button.CommandParameter;
-
-        if (selectedItem is ShoppingCart item)
+        //ShoppingCart
+        if (selectedItem is ShoppingItems item)
         {
-            string name = item.NameOfItem;
-            int quantityAmount = item.ItemAmount - 1;
-            decimal total = item.CartTotal;
-            string img = item.ItemImageCart;
+            string name = item.ItemName;
+            int quantityAmount = item.ItemQuantity - 1;
+            decimal total = item.ItemPrice;
+            string img = item.ItemImage;
+            
 
             InsertToDatabase(name, total, quantityAmount, img);
             DisplayAlert("Cart", "Item Added To Cart", "Done");
         }
     }
+
+
     public void InsertToDatabase(string name, decimal amount, int quantity, string images)
     {
         _database.InsertToCart(name, amount, quantity, images);
     }
+
     private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         // Does the exact some thing the button does
@@ -75,7 +79,7 @@ public partial class ShoppingListUI : ContentPage
     }
 
     // List data that will be displayed in the list UI
-    private List<ShoppingCart> GetAllItems()
+    /*private List<ShoppingCart> GetAllItems()
     {
         return new List<ShoppingCart>
         {
@@ -103,5 +107,5 @@ public partial class ShoppingListUI : ContentPage
                 ItemImageCart = "Resources/Images/air_maxs.png",
             },
         };
-    }
+    }*/
 }
